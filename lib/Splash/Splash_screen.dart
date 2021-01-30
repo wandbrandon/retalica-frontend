@@ -12,19 +12,18 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.orange,
       body: Container(
+        color: Colors.orange[700],
         alignment: Alignment.center,
-        margin: EdgeInsets.all(50),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        margin: EdgeInsets.all(60),
+        child: Column(children: [
           Container(
             child: Text('The title of this statment'),
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.blue[800]),
-            margin: EdgeInsets.all(260),
+            decoration: BoxDecoration(color: Colors.blue[800]),
+            margin: EdgeInsets.all(230),
             padding: EdgeInsets.all(70),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 200),
+            padding: const EdgeInsets.symmetric(horizontal: 170),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

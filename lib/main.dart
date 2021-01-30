@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:retalica/Splash/Splash_screen.dart';
-import 'package:splash_screen_view/SplashScreenView.dart';
 
 void main() {
   runApp(MyApp());
