@@ -13,15 +13,32 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Image.asset(
+            'lib/assets/retalica_small.png',
+            color: Colors.white,
+            isAntiAlias: true,
+          ),
+        ),
+        leadingWidth: 50,
+      ),
       body: Container(
-        color: Colors.orange[700],
+        decoration: BoxDecoration(
+            color: Colors.orange[700],
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         alignment: Alignment.center,
         margin: EdgeInsets.all(60),
         child: Column(children: [
           Container(
-            child: Text('The title of this statment'),
-            decoration: BoxDecoration(color: Colors.blue[800]),
+            child: Text(
+              'Retalica',
+              style: TextStyle(),
+            ),
+            decoration: BoxDecoration(
+                color: Colors.blue[800],
+                borderRadius: BorderRadius.all(Radius.circular(10))),
             margin: EdgeInsets.all(230),
             padding: EdgeInsets.all(70),
           ),
@@ -36,8 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: RaisedButton(
                         onPressed: () {
                           print("Top 5 pressed");
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => TopFivePage()));
+                          Navigator.of(context).pushNamed('/top5');
                         },
                         child: Text("5 most talked about stocks"),
                         color: Colors.blue[800]),
@@ -48,8 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: RaisedButton(
                         onPressed: () {
                           print("About us was pressed");
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AboutPage()));
+                          Navigator.of(context).pushNamed('/about');
                         },
                         child: Text("About Us"),
                         color: Colors.blue[800]),
@@ -60,8 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: RaisedButton(
                         onPressed: () {
                           print("Search was pressed");
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => MyHomePage()));
+                          Navigator.of(context).pushNamed('/top5');
                         },
                         child: Text("Search stock tickers"),
                         color: Colors.blue[800],
