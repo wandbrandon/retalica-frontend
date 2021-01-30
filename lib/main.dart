@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:retalica/about.dart';
 import 'package:retalica/services/alpha_service.dart';
+import 'package:retalica/splash/splash_screen.dart';
 import 'package:retalica/stock_info/main_stock_graph.dart';
 
 void main() {
@@ -30,9 +31,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => MyHomePage(
-              title: 'Retalica',
-            ),
+        '/': (context) => SplashScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/about': (context) => AboutPage(),
       },
@@ -64,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
     });
-
   }
 
   @override
