@@ -12,19 +12,44 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.orange,
       body: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(children: [
-          Text("this is the title of the app."),
-          Row(children: [
-            RaisedButton(onPressed: () {
-              print("Top 5 pressed");
-            }),
-            RaisedButton(onPressed: () {
-              print("Search was pressed");
-            })
-          ]),
+        alignment: Alignment.center,
+        margin: EdgeInsets.all(50),
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Container(
+            child: Text('The title of this statment'),
+            decoration:
+                BoxDecoration(shape: BoxShape.circle, color: Colors.blue[800]),
+            margin: EdgeInsets.all(260),
+            padding: EdgeInsets.all(70),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 200),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ButtonTheme(
+                    minWidth: 200,
+                    height: 100,
+                    child: RaisedButton(
+                        onPressed: () {
+                          print("Top 5 pressed");
+                        },
+                        child: Text("Search stock tickers"),
+                        color: Colors.blue[800]),
+                  ),
+                  ButtonTheme(
+                      minWidth: 200,
+                      height: 100,
+                      child: RaisedButton(
+                        onPressed: () {
+                          print("Search was pressed");
+                        },
+                        child: Text("Search stock tickers"),
+                        color: Colors.blue[800],
+                      ))
+                ]),
+          ),
         ]),
       ),
     );
