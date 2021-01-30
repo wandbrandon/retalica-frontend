@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:retalica/about.dart';
 import 'package:retalica/main.dart';
+import 'package:retalica/search/search.dart';
 import 'package:retalica/topfive/top_five_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +15,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: Search());
+              })
+        ],
         leading: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Image.asset(

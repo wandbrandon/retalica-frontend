@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:retalica/about.dart';
+import 'package:retalica/search/search.dart';
 import 'package:retalica/services/alpha_service.dart';
 import 'package:retalica/splash/splash_screen.dart';
 import 'package:retalica/stock_info/main_stock_graph.dart';
@@ -76,6 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: Search());
+              })
+        ],
         leading: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Image.asset(
