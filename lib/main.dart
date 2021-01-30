@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:retalica/about.dart';
+import 'package:retalica/search/search.dart';
 import 'package:retalica/services/alpha_service.dart';
+import 'package:retalica/splash/splash_screen.dart';
+import 'package:retalica/stock_info/main_stock_graph.dart';
 import 'package:retalica/scaffold/custom_scaffold.dart';
 import 'package:retalica/stock_info/widgets/graph_object.dart';
 
@@ -15,6 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return Provider<String>(
       create: (_) => 'Retalica',
       builder: (context, child) => MaterialApp(
