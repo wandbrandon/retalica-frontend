@@ -1,23 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:retalica/scaffold/custom_scaffold.dart';
 
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Image.asset(
-            'lib/assets/retalica_small.png',
-            color: Colors.white,
-            isAntiAlias: true,
-          ),
-        ),
-        leadingWidth: 50,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('About Retalica'),
-      ),
+    return CustomScaffold(
       body: Container(
         child: Row(
           children: [
@@ -84,7 +71,7 @@ class AboutPage extends StatelessWidget {
             )),
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
