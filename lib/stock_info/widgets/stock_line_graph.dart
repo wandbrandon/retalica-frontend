@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:retalica/services/alpha_service.dart';
+import 'package:provider/provider.dart';
+import 'package:retalica/models/stock_model.dart';
+import 'package:retalica/services/graph_state.dart';
 
 class StockLineGraph extends StatefulWidget {
   @override
@@ -8,29 +10,85 @@ class StockLineGraph extends StatefulWidget {
 }
 
 class _StockLineGraphState extends State<StockLineGraph> {
+  LineChartData decider(GraphState state, Stock stock) {
+    switch (state.getView.index) {
+      case 0:
+        return build500Mins(stock);
+      case 1:
+        return build100Days(stock);
+      case 2:
+        return build100Weeks(stock);
+      default:
+        return build500Mins(stock);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: fetchAlphaResponse(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return LineChart(LineChartData(
-              lineTouchData: LineTouchData(fullHeightTouchLine: true),
-              gridData: FlGridData(show: false),
-              lineBarsData: [
-                LineChartBarData(
-                  spots: snapshot.data.oneDay,
-                  barWidth: 1.5,
-                  isStrokeCapRound: true,
-                  dotData: FlDotData(
-                    show: false,
-                  ),
-                )
-              ],
-            ));
-          } else {
-            return Center(child: CircularProgressIndicator.adaptive());
-          }
-        });
+    GraphState state = context.watch<GraphState>();
+    Stock stock = context.watch<Stock>();
+    return LineChart(decider(state, stock), swapAnimationDuration: Duration(milliseconds: 600),);
+  }
+
+  LineChartData build500Mins(Stock stock) {
+    return LineChartData(
+      lineTouchData: LineTouchData(fullHeightTouchLine: true,
+      touchTooltipData: LineTouchTooltipData(
+        showOnTopOfTheChartBoxArea: true,
+        tooltipBgColor: Colors.transparent,
+      )),
+      gridData: FlGridData(show: false),
+      axisTitleData: FlAxisTitleData(show: false),
+      borderData: FlBorderData(show: false),
+      titlesData: FlTitlesData(show: false),
+
+      lineBarsData: [
+        LineChartBarData(
+            spots: stock.oneDay,
+            
+            barWidth: 1.5,
+            isCurved: true,
+            dotData: FlDotData(
+              show: false,
+            ),
+            colors: [Theme.of(context).accentColor])
+      ],
+    );
+  }
+
+  LineChartData build100Days(Stock stock) {
+    return LineChartData(
+      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      gridData: FlGridData(show: false),
+      lineBarsData: [
+        LineChartBarData(
+            spots: stock.oneMonth,
+            barWidth: 1.5,
+            //isStrokeCapRound: true,
+            isCurved: true,
+            dotData: FlDotData(
+              show: false,
+            ),
+            colors: [Theme.of(context).accentColor])
+      ],
+    );
+  }
+
+  LineChartData build100Weeks(Stock stock) {
+    return LineChartData(
+      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      gridData: FlGridData(show: false),
+      lineBarsData: [
+        LineChartBarData(
+            spots: stock.oneYear,
+            barWidth: 1.5,
+            isCurved: true,
+            //isStrokeCapRound: true,
+            dotData: FlDotData(
+              show: false,
+            ),
+            colors: [Theme.of(context).accentColor])
+      ],
+    );
   }
 }

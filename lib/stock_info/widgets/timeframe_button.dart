@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:retalica/stock_info/graph_state.dart';
+import 'package:retalica/services/graph_state.dart';
 import 'package:tap_builder/tap_builder.dart';
 
 class TimeFrameButton extends StatefulWidget {
