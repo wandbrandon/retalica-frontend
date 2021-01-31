@@ -4,7 +4,7 @@ import 'package:retalica/about.dart';
 import 'package:retalica/main.dart';
 import 'package:retalica/scaffold/custom_scaffold.dart';
 import 'package:retalica/search/search.dart';
-import 'package:retalica/topfive/top_five_page.dart';
+import 'package:retalica/topfive/top_ten_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
