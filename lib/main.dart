@@ -6,9 +6,9 @@ import 'package:retalica/about.dart';
 import 'package:retalica/search/search.dart';
 import 'package:retalica/services/alpha_service.dart';
 import 'package:retalica/splash/splash_screen.dart';
-import 'package:retalica/stock_info/main_stock_graph.dart';
 import 'package:retalica/scaffold/custom_scaffold.dart';
 import 'package:retalica/stock_info/widgets/graph_object.dart';
+import 'package:retalica/topfive/top_five_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.dark,
         darkTheme: ThemeData(
             brightness: Brightness.dark,
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.grey[900],
             canvasColor: Colors.black,
             primaryColor: Colors.black,
             accentColor: Colors.blue,
@@ -38,38 +38,12 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           // When navigating to the "/" route, build the FirstScreen widget.
-          '/': (context) => MyHomePage(
-                title: 'Retalica',
-              ),
+          '/': (context) => SplashScreen(),
           // When navigating to the "/second" route, build the SecondScreen widget.
           '/about': (context) => AboutPage(),
+          '/topfive': (context) => TopFivePage(),
         },
       ),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomScaffold(body: Center(child: GraphObject()));
   }
 }
