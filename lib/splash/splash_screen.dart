@@ -32,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         leadingWidth: 50,
       ),
+      drawer: Drawer(),
       body: Container(
         decoration: BoxDecoration(
             color: Colors.orange[700],
