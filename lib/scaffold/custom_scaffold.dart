@@ -34,6 +34,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             ],
           ),
           actions: [
+          main
             AppBarAction(
                 route: '/',
                 onTap: () {
@@ -59,5 +60,18 @@ class _CustomScaffoldState extends State<CustomScaffold> {
         body: SingleChildScrollView(
           child: widget.body,
         ));
+
+            AppBarAction(route: '/'),
+            AppBarAction(route: '/about'),
+            AppBarAction(route: '/topfive'),
+            IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  showSearch(context: context, delegate: Search());
+                })
+          ],
+        ),
+        body: widget.body);
+
   }
 }
