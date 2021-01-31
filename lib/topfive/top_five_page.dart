@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:retalica/models/stock_model.dart';
 import 'package:retalica/scaffold/custom_scaffold.dart';
-import 'package:retalica/services/alpha_service.dart';
+import 'package:retalica/services/finnhub_service.dart';
 import 'package:retalica/topfive/stock_button.dart';
 
 class TopFivePage extends StatefulWidget {
@@ -19,13 +19,15 @@ class _TopFivePageState extends State<TopFivePage> {
   @override
   Widget build(BuildContext context) {
     return FutureProvider<Stock>(
-        create: (context) => fetchAlphaResponse('IBM'),
+        create: (context) => fetchFinnHubResponse('AAPL'),
+        catchError: (context, object) => Stock(ticker: 'empty'),
         builder: (context, child) {
           Stock tempStock = context.watch<Stock>();
           return CustomScaffold(
               body: tempStock != null
-                  ? Column(
+                  ? tempStock.ticker != 'empty' ? Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                             'Thanks for waiting. These are your top ten stocks as requested.'),
@@ -43,12 +45,12 @@ class _TopFivePageState extends State<TopFivePage> {
                           ),
                         ),
                       ],
-                    )
-                  : Center(child: SpinKitRotatingPlain(
-
-  color: Theme.of(context).highlightColor,
-  size: 50.0,
-)));
+                    ) : Center(child: Text("Something went wrong, it might be our servers or our limits on API calls"))
+                  : Center(
+                      child: SpinKitRotatingPlain(
+                        color: Theme.of(context).highlightColor,
+                        size: 50.0,
+                    )));
         });
   }
 }

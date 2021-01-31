@@ -8,8 +8,13 @@ class Search extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
     // action for app bar
-    return [IconButton(icon: Icon(Icons.clear), onPressed: () {})];
-    throw UnimplementedError();
+    return [
+      IconButton(
+          icon: Icon(Icons.clear),
+          onPressed: () {
+            query = "";
+          })
+    ];
   }
 
   @override
@@ -20,27 +25,54 @@ class Search extends SearchDelegate<String> {
           icon: AnimatedIcons.menu_arrow,
           progress: transitionAnimation,
         ),
-        onPressed: () {});
-    throw UnimplementedError();
+        onPressed: () {
+          close(context, null);
+        });
   }
 
   @override
   Widget buildResults(BuildContext context) {
     // show some result based on the selection
-    throw UnimplementedError();
+    return Container(
+      height: 100,
+      width: 100,
+      child: Card(
+        color: Colors.red,
+        shape: StadiumBorder(),
+        child: Center(
+          child: Text(query),
+        ),
+      ),
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // show when someone searches for something
-    final suggestionList = query.isEmpty ? recentSearches : searches;
+    final suggestionList = query.isEmpty
+        ? recentSearches
+        : searches.where((p) => p.startsWith(query)).toList();
+
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
+        onTap: () {
+          showResults(context);
+        },
         leading: Icon(Icons.account_balance_wallet),
-        title: Text(suggestionList[index]),
+        title: RichText(
+          text: TextSpan(
+            text: suggestionList[index].substring(0, query.length),
+            style:
+                TextStyle(color: Colors.grey[800], fontWeight: FontWeight.bold),
+            children: [
+              TextSpan(
+                  text: suggestionList[index].substring(query.length),
+                  style: TextStyle(color: Colors.grey[400]))
+            ],
+          ),
+        ),
       ),
       itemCount: suggestionList.length,
     );
-    throw UnimplementedError();
   }
 }

@@ -58,7 +58,11 @@ class _StockLineGraphState extends State<StockLineGraph> {
 
   LineChartData build100Days(Stock stock) {
     return LineChartData(
-      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      lineTouchData: LineTouchData(fullHeightTouchLine: true,
+      touchTooltipData: LineTouchTooltipData(
+        showOnTopOfTheChartBoxArea: true,
+        tooltipBgColor: Colors.transparent,
+      )),
       gridData: FlGridData(show: false),
       lineBarsData: [
         LineChartBarData(
@@ -76,7 +80,11 @@ class _StockLineGraphState extends State<StockLineGraph> {
 
   LineChartData build100Weeks(Stock stock) {
     return LineChartData(
-      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      lineTouchData: LineTouchData(fullHeightTouchLine: true,
+      touchTooltipData: LineTouchTooltipData(
+        showOnTopOfTheChartBoxArea: true,
+        tooltipBgColor: Colors.transparent,
+      )),
       gridData: FlGridData(show: false),
       lineBarsData: [
         LineChartBarData(
