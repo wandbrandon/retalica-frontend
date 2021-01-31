@@ -8,7 +8,7 @@ import 'package:retalica/services/finnhub_service.dart';
 import 'package:retalica/splash/splash_screen.dart';
 import 'package:retalica/scaffold/custom_scaffold.dart';
 import 'package:retalica/stock_info/widgets/graph_object.dart';
-import 'package:retalica/topfive/top_five_page.dart';
+import 'package:retalica/topfive/top_ten_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => SplashScreen(),
           // When navigating to the "/second" route, build the SecondScreen widget.
           '/about': (context) => AboutPage(),
-          '/topfive': (context) => TopFivePage(),
+          '/topfive': (context) => TopTenPage(),
         },
       ),
     );
