@@ -44,7 +44,7 @@ class _StockLineGraphState extends State<StockLineGraph> {
 
       lineBarsData: [
         LineChartBarData(
-            spots: stock.oneDay,
+            spots: stock.last500Mins,
             
             barWidth: 1.5,
             isCurved: true,
@@ -58,11 +58,15 @@ class _StockLineGraphState extends State<StockLineGraph> {
 
   LineChartData build100Days(Stock stock) {
     return LineChartData(
-      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      lineTouchData: LineTouchData(fullHeightTouchLine: true,
+      touchTooltipData: LineTouchTooltipData(
+        showOnTopOfTheChartBoxArea: true,
+        tooltipBgColor: Colors.transparent,
+      )),
       gridData: FlGridData(show: false),
       lineBarsData: [
         LineChartBarData(
-            spots: stock.oneMonth,
+            spots: stock.last100Days,
             barWidth: 1.5,
             //isStrokeCapRound: true,
             isCurved: true,
@@ -76,11 +80,15 @@ class _StockLineGraphState extends State<StockLineGraph> {
 
   LineChartData build100Weeks(Stock stock) {
     return LineChartData(
-      lineTouchData: LineTouchData(fullHeightTouchLine: true),
+      lineTouchData: LineTouchData(fullHeightTouchLine: true,
+      touchTooltipData: LineTouchTooltipData(
+        showOnTopOfTheChartBoxArea: true,
+        tooltipBgColor: Colors.transparent,
+      )),
       gridData: FlGridData(show: false),
       lineBarsData: [
         LineChartBarData(
-            spots: stock.oneYear,
+            spots: stock.last100Weeks,
             barWidth: 1.5,
             isCurved: true,
             //isStrokeCapRound: true,

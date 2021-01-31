@@ -27,6 +27,8 @@ dependencies:
   provider: 
   tap_builder: ^0.2.0-beta
   http: ^0.12.2
+  flutter_spinkit: "^4.1.2"
+  google_fonts: "^1.1.2"
 
 
 

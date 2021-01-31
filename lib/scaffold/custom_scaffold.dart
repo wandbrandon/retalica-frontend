@@ -34,6 +34,33 @@ class _CustomScaffoldState extends State<CustomScaffold> {
             ],
           ),
           actions: [
+          main
+            AppBarAction(
+                route: '/',
+                onTap: () {
+                  Navigator.pushNamed(context, '/');
+                }),
+            AppBarAction(
+                route: '/topfive',
+                onTap: () {
+                  Navigator.pushNamed(context, '/topfive');
+                }),
+            AppBarAction(
+                route: '/about',
+                onTap: () {
+                  Navigator.pushNamed(context, '/about');
+                }),
+            AppBarAction(
+                route: '/search',
+                onTap: () {
+                  showSearch(context: context, delegate: Search());
+                }),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: widget.body,
+        ));
+
             AppBarAction(route: '/'),
             AppBarAction(route: '/about'),
             AppBarAction(route: '/topfive'),
@@ -45,5 +72,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
           ],
         ),
         body: widget.body);
+
   }
 }
