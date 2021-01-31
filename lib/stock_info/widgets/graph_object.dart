@@ -61,8 +61,7 @@ class GraphObjectState extends State<GraphObject> {
                     text: '~9HR',
                     view: GraphView.last500mins,
                   ),
-                  SizedBox(width: 20,),
-                  
+                  SizedBox(width: 20,),         
                   TimeFrameButton(
                     onTap: () {
                       context.read<GraphState>().set(GraphView.last100days);
@@ -71,7 +70,6 @@ class GraphObjectState extends State<GraphObject> {
                     view: GraphView.last100days,
                   ),
                   SizedBox(width: 20,),
-                  
                   TimeFrameButton(
                     onTap: () {
                       context.read<GraphState>().set(GraphView.last100wks);
