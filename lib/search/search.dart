@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:retalica/services/finnhub_service.dart';
+import 'package:retalica/stock_info/widgets/stock_page.dart';
 
 class Search extends SearchDelegate<String> {
-  final searches = ["appl", "gme", "jnj", "amc", "amd", "clsk", "ibm", "tsla"];
-
-  final recentSearches = ["appl", "gme", "jnj", "amc", "amd"];
-
+  final searches = ["AAL", "GME", "JNJ", "AAPL", "AMD", "PG", "IBM", "TSLA"];
+  final recentSearches = [];
   @override
   List<Widget> buildActions(BuildContext context) {
     // action for app bar
@@ -15,7 +15,6 @@ class Search extends SearchDelegate<String> {
             query = "";
           })
     ];
-
   }
 
   @override
@@ -29,24 +28,23 @@ class Search extends SearchDelegate<String> {
         onPressed: () {
           close(context, null);
         });
-
   }
 
   @override
   Widget buildResults(BuildContext context) {
     // show some result based on the selection
-    return Container(
-      height: 100,
-      width: 100,
-      child: Card(
-        color: Colors.red,
-        shape: StadiumBorder(),
-        child: Center(
-          child: Text(query),
-        ),
-      ),
-    );
 
+    //loading screen
+    return FutureBuilder(
+      future: fetchFinnHubResponse(query),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return StockPage(stock: snapshot.data);
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
+    );
   }
 
   @override
