@@ -15,7 +15,7 @@ class Search extends SearchDelegate<String> {
             query = "";
           })
     ];
-    throw UnimplementedError();
+
   }
 
   @override
@@ -29,7 +29,7 @@ class Search extends SearchDelegate<String> {
         onPressed: () {
           close(context, null);
         });
-    throw UnimplementedError();
+
   }
 
   @override
@@ -46,7 +46,7 @@ class Search extends SearchDelegate<String> {
         ),
       ),
     );
-    throw UnimplementedError();
+
   }
 
   @override
@@ -77,6 +77,5 @@ class Search extends SearchDelegate<String> {
       ),
       itemCount: suggestionList.length,
     );
-    throw UnimplementedError();
   }
 }

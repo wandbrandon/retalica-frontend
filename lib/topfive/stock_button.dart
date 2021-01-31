@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:retalica/models/stock_model.dart';
 import 'package:retalica/stock_info/widgets/stock_line_mini.dart';
+import 'package:retalica/stock_info/widgets/stock_page.dart';
 import 'package:tap_builder/tap_builder.dart';
 
 class StockButton extends StatefulWidget {
@@ -16,7 +17,9 @@ class _StockButtonState extends State<StockButton> {
   @override
   Widget build(BuildContext context) {
     return AnimatedTapBuilder(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => StockPage(stock: widget.stock)));
+      },
       builder: (context, state, cursorLocation, cursorAlignment) {
         cursorAlignment = state == TapState.hover
             ? Alignment(cursorAlignment.x, cursorAlignment.y)

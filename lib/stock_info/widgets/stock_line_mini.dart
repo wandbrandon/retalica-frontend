@@ -33,7 +33,7 @@ class _StockLineMiniState extends State<StockLineMini> {
       titlesData: FlTitlesData(show: false),
       lineBarsData: [
         LineChartBarData(
-            spots: stock.last100Days.sublist(75, 100),
+            spots: stock.last100Days,
             barWidth: 3,
             isCurved: curve,
             dotData: FlDotData(

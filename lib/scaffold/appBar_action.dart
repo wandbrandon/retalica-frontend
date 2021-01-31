@@ -4,8 +4,9 @@ import 'package:tap_builder/tap_builder.dart';
 
 class AppBarAction extends StatelessWidget {
   final String route;
+  final Function onTap;
 
-  const AppBarAction({Key key, this.route}) : super(key: key);
+  const AppBarAction({Key key, this.route, this.onTap}) : super(key: key);
 
   bool colorDefiner(bool hovering, bool tapped, String currentRoute) {
     if (hovering) {
@@ -21,14 +22,12 @@ class AppBarAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 23.0, right: 23.0 ),
+      padding: const EdgeInsets.only(top: 23.0, right: 23.0),
       child: TapBuilder(
-        onTap: () {
-          Navigator.pushNamed(context, route);
-        },
+        onTap: onTap,
         builder: (BuildContext context, TapState tapState) {
           return AnimatedDefaultTextStyle(
-            child: route!='/' ? Text(route) : Text('/home'),
+            child: route != '/' ? Text(route) : Text('/home'),
             style: TextStyle(
                 color: colorDefiner(
                         tapState == TapState.hover,
