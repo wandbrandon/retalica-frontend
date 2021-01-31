@@ -22,19 +22,20 @@ class _SplashScreenState extends State<SplashScreen> {
         alignment: Alignment.center,
         margin: EdgeInsets.all(60),
         child: Column(children: [
-          Container(
-            child: Text(
-              'Retalica',
-              style: TextStyle(),
-            ),
+          AnimatedContainer(
+            duration: Duration(milliseconds: 200),
             decoration: BoxDecoration(
                 color: Colors.blue[800],
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             margin: EdgeInsets.all(230),
             padding: EdgeInsets.all(70),
+            child: Text(
+              'Retalica',
+              style: TextStyle(),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 170),
+            padding: const EdgeInsets.symmetric(horizontal: 160),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,7 +67,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: RaisedButton(
                         onPressed: () {
                           print("Search was pressed");
-                          Navigator.of(context).pushNamed('/top5');
+
+                          showSearch(context: context, delegate: Search());
                         },
                         child: Text("Search stock tickers"),
                         color: Colors.blue[800],
