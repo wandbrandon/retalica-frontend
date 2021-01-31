@@ -35,9 +35,9 @@ class _CustomScaffoldState extends State<CustomScaffold> {
           ),
           actions: [
             AppBarAction(
-                route: '/',
+                route: '/search',
                 onTap: () {
-                  Navigator.pushNamed(context, '/');
+                  showSearch(context: context, delegate: Search());
                 }),
             AppBarAction(
                 route: '/topfive',
@@ -49,10 +49,11 @@ class _CustomScaffoldState extends State<CustomScaffold> {
                 onTap: () {
                   Navigator.pushNamed(context, '/about');
                 }),
+            
             AppBarAction(
-                route: '/search',
+                route: '/',
                 onTap: () {
-                  showSearch(context: context, delegate: Search());
+                  Navigator.pushNamed(context, '/');
                 }),
           ],
         ),
