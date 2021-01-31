@@ -59,16 +59,15 @@ Future<Stock> fetchAlphaResponse(String ticker) async {
   final weeklyResponse = await http.get(
       'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo');
   print('fetched daily response');
-  print('fetched alpha response'); //
 
   if (intraResponse.statusCode == 200 && dailyResponse.statusCode == 200) {
     print('200');
     final intralist = jsonDecode(intraResponse.body);
     final dailylist = jsonDecode(dailyResponse.body);
     final weeklylist = jsonDecode(weeklyResponse.body);
-    temp.oneDay = last500MinsConverter(intralist);
-    temp.oneMonth = last100DaysConverter(dailylist);
-    temp.oneYear = last100WeeksConverter(weeklylist);
+    temp.last500Mins = last500MinsConverter(intralist);
+    temp.last100Days = last100DaysConverter(dailylist);
+    temp.last100Weeks = last100WeeksConverter(weeklylist);
   } else {
     throw Exception('Failed to load Stock');
   }

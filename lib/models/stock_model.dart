@@ -3,11 +3,11 @@ import 'package:fl_chart/fl_chart.dart';
 class Stock {
   final String ticker;
   final DateTime lastUpdated;
-  List<FlSpot> oneDay;
+  List<FlSpot> last500Mins;
   // List<FlSpot> oneWeek;
-  List<FlSpot> oneMonth; // List<FlSpot> threeMonth;
-  List<FlSpot> oneYear;
+  List<FlSpot> last100Days; // List<FlSpot> threeMonth;
+  List<FlSpot> last100Weeks;
   // List<FlSpot> fiveYear;
 
-  Stock({this.ticker, this.lastUpdated, this.oneDay, this.oneMonth});
+  Stock({this.ticker, this.lastUpdated, this.last500Mins, this.last100Days});
 }

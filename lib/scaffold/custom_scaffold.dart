@@ -36,7 +36,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
           AppBarAction(route: '/search'),
         ],
       ),
-      body: widget.body
+      body: SingleChildScrollView(child: widget.body,) 
       
     );
   }
