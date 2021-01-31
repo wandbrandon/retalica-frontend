@@ -15,6 +15,7 @@ class Search extends SearchDelegate<String> {
             query = "";
           })
     ];
+
   }
 
   @override
@@ -28,6 +29,7 @@ class Search extends SearchDelegate<String> {
         onPressed: () {
           close(context, null);
         });
+
   }
 
   @override
@@ -44,6 +46,7 @@ class Search extends SearchDelegate<String> {
         ),
       ),
     );
+
   }
 
   @override
